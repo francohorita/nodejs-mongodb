@@ -1,7 +1,7 @@
 {
-  "name": "crud-nodejs-mongodb",
+  "name": "nodejs-mongodb",
   "version": "1.0.0",
-  "description": "crud-nodejs-mongodb",
+  "description": "nodejs-mongodb",
   "main": "app.js",
   "directories": {
     "test": "test"
@@ -13,5 +13,10 @@
     "nodejs"
   ],
   "author": "fhorita",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.5.3"
+  }
 }
