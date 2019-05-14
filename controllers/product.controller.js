@@ -2,7 +2,10 @@ const Product = require("../models/product.model")
 
 //Test controller
 exports.test = function (req, res, next) {
-    res.send("Greetings from the Test controller!")
+    const testMessage = "Greetings from the Test controller!"
+    
+    res.send(testMessage)
+    console.log(testMessage)
 }
 
 //Create Controller
@@ -19,6 +22,7 @@ exports.product_create = function (req, res, next) {
             return next(err)
 
         res.send("Product Created successfully")
+        console.log("Create:" + product)
     })
 }
 
@@ -26,6 +30,8 @@ exports.product_create = function (req, res, next) {
 exports.product_details = function (req, res) {
     Product.findById(req.params.id, function (err, product) {
         if (err) return next(err)
-            res.send(product)
+        
+        res.send(product)
+        console.log("Get:" + product)
     })
 }
