@@ -5,7 +5,7 @@ exports.test = function (req, res, next) {
     res.send("Greetings from the Test controller!")
 }
 
-//ProductCreate Controller
+//Create Controller
 exports.product_create = function (req, res, next) {
     let product = new Product(
         {
@@ -20,4 +20,12 @@ exports.product_create = function (req, res, next) {
 
         res.send("Product Created successfully")
     })
-};
+}
+
+//Get Controller
+exports.product_details = function (req, res) {
+    Product.findById(req.params.id, function (err, product) {
+        if (err) return next(err)
+            res.send(product)
+    })
+}
