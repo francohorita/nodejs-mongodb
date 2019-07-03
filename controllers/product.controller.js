@@ -18,8 +18,7 @@ exports.product_create = function (req, res, next) {
     );
 
     product.save(function (err) {
-        if (err)
-            return next(err)
+        if (err) return next(err)
 
         res.send("Product Created successfully")
         console.log("Create:" + product)
@@ -27,7 +26,7 @@ exports.product_create = function (req, res, next) {
 }
 
 //Get Controller
-exports.product_details = function (req, res) {
+exports.product_details = function (req, res, next) {
     Product.findById(req.params.id, function (err, product) {
         if (err) return next(err)
         
@@ -37,11 +36,21 @@ exports.product_details = function (req, res) {
 }
 
 //Update Controller
-exports.product_update = function (req, res) {
+exports.product_update = function (req, res, next) {
     Product.findByIdAndUpdate(req.params.id, {$set: req.body}, function (err, product) {
         if (err) return next(err)
 
         res.send("Product udpated.")
         console.log("Update:" + product)
+    })
+}
+
+//Query Controller
+exports.product_query = function (req, res, next) {
+    Product.find({}, function (err, products) {
+        if (err) return next(err)
+        
+        res.send(products)
+        console.log("Get:" + products)
     })
 }
